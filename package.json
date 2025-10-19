@@ -1,0 +1,57 @@
+{
+  "name": "encoding-detector",
+  "displayName": "Encoding Detector",
+  "description": "Warns you when opening files that are not in a safe, configurable encoding like UTF-8 or ASCII.",
+  "version": "1.1.0",
+  "publisher": "RasmusHogsltt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RasmusHogslatt/encoding_detector.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "encoding-detector.showEncodingInfo",
+        "title": "Show File Encoding Info"
+      }
+    ],
+    "configuration": {
+      "title": "Encoding Detector",
+      "properties": {
+        "encodingDetector.safeEncodings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "ascii",
+            "utf-8"
+          ],
+          "description": "A list of file encodings that are considered 'safe' and will not trigger a status bar warning."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^20.x",
+    "typescript": "^5.1.6"
+  }
+}
